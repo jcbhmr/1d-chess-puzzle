@@ -7,7 +7,7 @@
     "lint": "tsc --noEmit",
     "format": "prettier -w ."
   },
-  "dependencies": {
+  "devDependencies": {
     "@types/node": "latest",
     "@types/react": "^18.2.56",
     "@types/react-dom": "^18.2.19",
