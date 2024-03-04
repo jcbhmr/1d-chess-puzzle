@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 export function WhiteKing() {
   return (
     <svg viewBox="0 0 45 45" width="45" height="45">
@@ -329,50 +327,17 @@ export function BlackRook() {
   );
 }
 
-export function Empty() {
+export function Null() {
   return <svg viewBox="0 0 45 45" width="45" height="45"></svg>;
 }
 
 export const pieceMap = {
+  __proto__: null!,
   whiteking: WhiteKing,
   whiteknight: WhiteKnight,
   whiterook: WhiteRook,
   blackking: BlackKing,
   blackknight: BlackKnight,
   blackrook: BlackRook,
-  empty: Empty,
+  null: Null,
 } as const;
-
-function App() {
-  const [boardState, setBoardState] = useState<(keyof typeof pieceMap | null)[]>(() => [
-    "whiteking",
-    "whiteknight",
-    "whiterook",
-    null,
-    null,
-    "blackrook",
-    "blackknight",
-    "blackking",
-  ]);
-
-  function handleClick() {}
-
-  return (
-    <div className="flex justify-center mt-2">
-      <table className="border-collapse border border-gray-400">
-        <tbody>
-          <tr>
-            {boardState.map((x, i) => (
-              <td key={i}
-              className={`w-10 h-10 ${
-                i % 2 === 0 ? "bg-emerald-100" : "bg-emerald-200"
-              }`}>{pieceMap[x ?? "empty"]()}</td>
-            ))}
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  );
-}
-
-export default App;
