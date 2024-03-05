@@ -30,7 +30,7 @@ const config = {
    *
    * @see https://nextjs.org/docs/app/api-reference/next-config-js/basePath
    */
-  basePath: "/1dchess",
+  basePath: process.env.CI ? "/1dchess" : undefined,
 
   /**
    * Disable server-based image optimization. Next.js does not support
