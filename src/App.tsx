@@ -1,22 +1,21 @@
 import { useState, JSX } from "react";
-import chessPiecesSprite from "./assets/Chess_Pieces_Sprite.svg";
+import blackKing from "./assets/black-king.svg"
+import blackKnight from "./assets/black-knight.svg"
+import blackRook from "./assets/black-rook.svg"
+import whiteKing from "./assets/white-king.svg"
+import whiteKnight from "./assets/white-knight.svg"
+import whiteRook from "./assets/white-rook.svg"
 
-export function Piece({ piece }: { piece: { color: "white" | "black", type: "king" | "knight" | "rook" } }) {
-  const y = ["white", "black"].indexOf(piece.color);
-  const x = ["king", "queen", "bishop", "knight", "rook", "pawn"].indexOf(piece.type);
-  return (
-    <div
-      style={{
-        width: "100px",
-        height: "100px",
-        backgroundImage: `url("${chessPiecesSprite}")`,
-        backgroundPositionX: `${(x / 6) * 100}%`,
-        backgroundPositionY: `${(y / 2) * 100}%`,
-        backgroundSize: "100%"
-        background
-      }}
-    />
-  );
+export function Piece({ piece, ...props }: { piece: { color: "white" | "black", type: "king" | "knight" | "rook" } }) {
+  const url = {
+    "white,king": whiteKing,
+    "white,knight": whiteKnight,
+    "white,rook": whiteRook,
+    "black,king": blackKing,
+    "black,knight": blackKnight,
+    "black,rook": blackRook,
+  }[[piece.color, piece.type].join()]
+  return <img src={url} {...props} />
 }
 
 export function Board({ board }: { board: ({ color: "white" | "black", type: "king" | "knight" | "rook" } | null)[] }) {
