@@ -1,9 +1,15 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite'
-import node4web from "vite-plugin-node4web"
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import * as path from "node:path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss(), node4web()],
-})
+  base: process.env.BASE_PATH,
+  plugins: [react()],
+  // https://ui.shadcn.com/docs/installation/vite#update-viteconfigts
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+});
